@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#E8447C">
+<title>Stylla — Seu stylist pessoal</title>
+<meta name="description" content="Descubra seu tipo de estilo, seu tipo de corpo e sua paleta de cores. Uma vitrine inteira filtrada pela sua Style Formula.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,800;1,600&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='48' fill='%23E8447C'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Georgia'>S</text></svg>">
+</head>
+<body>
+<div id="app">
+
+  <!-- SPLASH -->
+  <section id="screen-splash" class="screen active">
+    <div class="splash-inner">
+      <div class="logo-mark">S</div>
+      <h1 class="brand">Stylla</h1>
+      <p class="tagline">Seu stylist pessoal no bolso</p>
+      <ul class="splash-points">
+        <li><span class="dot"></span> Selfie + quiz de 2 minutos</li>
+        <li><span class="dot"></span> Seu tipo de estilo e de corpo</li>
+        <li><span class="dot"></span> Paleta de cores personalizada</li>
+        <li><span class="dot"></span> Vitrine filtrada pela sua Style Formula</li>
+      </ul>
+      <button class="btn-primary" onclick="startOnboarding()">Descobrir meu estilo</button>
+      <button class="btn-ghost" id="btn-skip-splash" onclick="enterApp()">Já fiz minha análise</button>
+    </div>
+  </section>
+
+  <!-- ONBOARDING -->
+  <section id="screen-onboarding" class="screen">
+    <header class="ob-header">
+      <button class="ob-back" onclick="obBack()" aria-label="Voltar">‹</button>
+      <div class="ob-progress"><div id="ob-bar" class="ob-bar"></div></div>
+      <span id="ob-count" class="ob-count">1/9</span>
+    </header>
+    <div id="ob-body" class="ob-body"></div>
+  </section>
+
+  <!-- ANALYZING -->
+  <section id="screen-analyzing" class="screen">
+    <div class="an-inner">
+      <div class="an-ring"><div class="an-face" id="an-face">🙂</div></div>
+      <h2 id="an-title">Analisando sua selfie…</h2>
+      <p id="an-step" class="an-step">Lendo proporções do rosto</p>
+      <div class="an-progress"><div id="an-bar" class="an-bar-fill"></div></div>
+    </div>
+  </section>
+
+  <!-- RESULT -->
+  <section id="screen-result" class="screen">
+    <div class="result-scroll" id="result-body"></div>
+  </section>
+
+  <!-- MAIN APP -->
+  <section id="screen-main" class="screen">
+    <main id="tab-home" class="tab active"></main>
+    <main id="tab-shop" class="tab"></main>
+    <main id="tab-closet" class="tab"></main>
+    <main id="tab-profile" class="tab"></main>
+    <nav class="tabbar">
+      <button class="tabbtn active" data-tab="home" onclick="goTab('home')"><span class="ticon">⌂</span><span>Início</span></button>
+      <button class="tabbtn" data-tab="shop" onclick="goTab('shop')"><span class="ticon">◈</span><span>Loja</span></button>
+      <button class="tabbtn" data-tab="closet" onclick="goTab('closet')"><span class="ticon">♡</span><span>Closet</span></button>
+      <button class="tabbtn" data-tab="profile" onclick="goTab('profile')"><span class="ticon">☺</span><span>Perfil</span></button>
+    </nav>
+  </section>
+
+</div>
+
+<video id="cam" playsinline autoplay muted style="display:none"></video>
+<canvas id="camcanvas" style="display:none"></canvas>
+<script src="app.js"></script>
+</body>
+</html>
